@@ -1,12 +1,29 @@
-from math import*
-xbeg=-10
-xend=8
-dx=1
-print("Значение функции на интервале от -10 до 8")
-print("x\ty")
-for x in range(xbeg,xend+1):
-    if x<=-8: print(x,"\t",-3)
-    elif x>-8 and x<=-3: print(x,"\t",0.6*x+1.2)
-    elif x>-3 and x<=3: print(x,"\t",-sqrt(9-x**2))
-    elif x>3 and x<=5: print(x,"\t",x-3)
-    elif x>5 and x<=8: print(x,"\t",3)
+from zipfile import ZipFile
+import sys
+import argparse
+import zipfile
+import os
+
+
+# Virtual File System
+class Virtual_System:
+    def __init__(self, zip_path):
+        self.zip_path = zip_path
+        self.current_dir = '/'
+        self.file_structure = {}
+        self.load_zip()
+
+    def load_zip(self):
+        with zipfile.ZipFile(self.zip_path, 'r') as z:
+            for obj_path in z.namelist():
+                parts = obj_path.strip('/').split('/')
+                current_level = self.file_structure
+                for part in parts:
+                    if part == parts[-1] and not obj_path.endswith('/'):
+                        current_level[part] = "f"
+                    else:
+                        current_level = current_level.setdefault(part, {})
+
+
+
+
