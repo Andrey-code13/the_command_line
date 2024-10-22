@@ -1,0 +1,58 @@
+{
+	'system': 
+	{
+		'type': 'folder',
+		'access_rights': 'r-xr-xr-x', 
+		'list_f': {}
+	}, 
+	'etc': 
+	{
+		'type': 'folder',
+		'access_rights': 'r--r-----',
+		'list_f': 
+		{
+			'bin':
+			{
+				'type': 'folder',
+				'access_rights': 'rwxr-xr-x',
+				'list_f':
+				{
+					'device_data.txt':
+					{
+						'type': 'file',
+						'access_rights': 'rw-r-----'
+					}
+				}
+			},
+			'user': 
+			{
+				'type': 'folder',
+				'access_rights': 'rwxr-xr--', 
+				'list_f': 
+				{
+					'desktop': 
+					{
+						'type': 'folder',
+						'access_rights': 'rwxr-xr--',
+						'list_f': 
+						{
+							'user_data.txt':
+							{
+								'type': 'file',
+								'access_rights': 'rw-r-----'
+							}
+						}
+					}, 
+					'music': 
+					{
+						'type': 'folder',
+						'access_rights': 'rwxr-xr--',
+						'list_f': 
+						{
+						}
+					}
+				}
+			}
+		}
+	}
+}
